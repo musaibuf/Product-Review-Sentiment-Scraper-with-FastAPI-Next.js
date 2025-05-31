@@ -164,14 +164,6 @@ You would then instruct users to copy these example files to `.env` (for backend
     *   Click "Scrape Reviews".
     *   Wait for the process to complete. The reviews, sentiment analysis, and charts will be displayed. A link to the populated Google Sheet will also appear.
 
-## Notes on Daraz Scraping
-
-*   This scraper uses Selenium to load the initial product page and extract the product name and `itemId`.
-*   It then uses a known Daraz API endpoint (`my.daraz.pk/pdp/review/getReviewList`) to fetch the actual review data in JSON format. This is generally more reliable than parsing HTML for all reviews.
-*   The `itemId` is extracted from the product URL using a regular expression. This should work for most standard Daraz product URLs.
-*   If Daraz changes its API endpoint, API response structure, or URL patterns for `itemId`, the scraper might need updates.
-*   Web scraping, especially of large e-commerce sites, can be fragile. Selectors for the product name might change over time.
-
 ## Learn More (Next.js Boilerplate)
 
 To learn more about Next.js, take a look at the following resources:
