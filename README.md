@@ -1,6 +1,6 @@
 # Product Review Sentiment Scraper
 
-This project scrapes product reviews from an e-commerce site (specifically Daraz.pk), performs sentiment analysis on the reviews, saves the processed data to a Google Sheet, and displays the reviews, sentiment labels, and sentiment distribution charts on a web interface.
+This project scrapes product reviews from an e-commerce site (Daraz.pk), performs sentiment analysis on the reviews, saves the processed data to a Google Sheet, and displays the reviews, sentiment labels, and sentiment distribution charts on a web interface.
 
 The backend is built with FastAPI, and the frontend is built with Next.js.
 
