@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.venv/
+env/
+.env/
+ENV/
+# If your venv is named something else, add it here
+
+# Environment variables
+.env
+.env.*
+
+# Google Credentials
+google_credentials.json
+
+# IDE / Editor specific
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Log files
+*.log
+
+# Coverage reports
+.coverage
+coverage.xml
+htmlcov/
+
+# Build artifacts (if any)
+dist/
+build/
+*.egg-info/
