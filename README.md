@@ -69,7 +69,7 @@ Follow these steps to set up the necessary Google Cloud services:
     *   Open the `google_credentials.json` file you downloaded. Find the `client_email` address (it looks like an email, e.g., `your-service-account-name@your-project-id.iam.gserviceaccount.com`).
     *   In your Google Sheet, click the "Share" button (top right).
     *   Paste the service account's `client_email` address into the "Add people and groups" field.
-    *   Ensure it has **"Editor"** permissions for this sheet.
+    *   Ensure it has **"Editor"** permissions for this sheet. This step is crucial for the application to write data to the sheet.
     *   Click "Send" (you can uncheck "Notify people").
 
 ### 2. Backend (FastAPI) Setup
@@ -80,25 +80,26 @@ Follow these steps to set up the necessary Google Cloud services:
     ```
 2.  **Create and activate a Python virtual environment:**
     ```bash
-    python -m venv .venv 
+    python -m venv .venv
     # On Windows:
     .\.venv\Scripts\activate
     # On macOS/Linux:
     source .venv/bin/activate
     ```
 3.  **Install Python dependencies:**
+    *   The `requirements.txt` file is located in this `backend/` directory.
     ```bash
     pip install -r requirements.txt
     ```
     *(This will also install `webdriver-manager` which handles `chromedriver` automatically).*
 4.  **Create the Environment File (`.env`):**
-    *   In the `backend/` directory, create a file named `.env`.
+    *   In the `backend/` directory, you can create a `.env` file by copying the `backend/.env.example` file (if you've created one, see "Example Environment Files" below) or by creating a new file named `.env`.
     *   Add the following content, replacing `YOUR_GOOGLE_SHEET_ID_HERE` with the ID you copied in step 1.4:
         ```env
         GOOGLE_SHEET_ID="YOUR_GOOGLE_SHEET_ID_HERE"
         GOOGLE_CREDENTIALS_FILE="google_credentials.json"
         ```
-    *   Ensure `google_credentials.json` is in the `backend/` directory.
+    *   Ensure `google_credentials.json` (obtained from Google Cloud Console as described in step 1.3) is in the `backend/` directory.
 
 ### 3. Frontend (Next.js) Setup
 
@@ -114,6 +115,28 @@ Follow these steps to set up the necessary Google Cloud services:
     # or
     # pnpm install
     ```
+3.  **Create the Environment File (`.env.local`):**
+    *   In the `frontend/` directory, you can create a `.env.local` file by copying the `frontend/.env.local.example` file (if you've created one, see "Example Environment Files" below) or by creating a new file named `.env.local`.
+    *   Add the following content:
+        ```env
+        NEXT_PUBLIC_API_URL="http://127.0.0.1:8000"
+        ```
+    *   This tells the frontend where your FastAPI backend is running.
+
+### Example Environment Files (Recommended)
+
+It's good practice to include example environment files in your repository.
+
+*   **`backend/.env.example`:**
+    ```env
+    GOOGLE_SHEET_ID="YOUR_GOOGLE_SHEET_ID_HERE"
+    GOOGLE_CREDENTIALS_FILE="google_credentials.json"
+    ```
+*   **`frontend/.env.local.example`:**
+    ```env
+    NEXT_PUBLIC_API_URL="http://127.0.0.1:8000"
+    ```
+You would then instruct users to copy these example files to `.env` (for backend) and `.env.local` (for frontend) respectively, and then fill in their specific values. Remember to add these example files to Git but keep the actual `.env` and `.env.local` files in your `.gitignore`.
 
 ## Running the Application
 
